@@ -18,10 +18,9 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   background-color: #f2f2f2;
-  font-size: 62.5%;
 }
 
 ::-webkit-input-placeholder {
@@ -76,7 +75,7 @@ body {
   width: 75rem;
   height: 35rem;
   padding: 2rem;
-  margin: 2rem;
+  border-radius: 0.5rem;
   background-color: #f2f3f7;
   -webkit-box-shadow: -6px -6px 8px white, 15px 15px 28px rgba(0, 0, 0, 0.17);
           box-shadow: -6px -6px 8px white, 15px 15px 28px rgba(0, 0, 0, 0.17);
@@ -93,6 +92,16 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+@media only screen and (max-width: 1200px) {
+  .container {
+    width: 35rem;
+    height: 67rem;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
 }
 
 .input {
@@ -134,6 +143,7 @@ body {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   left: 98%;
+  cursor: pointer;
 }
 
 .input__button:active {
@@ -163,9 +173,20 @@ body {
           justify-content: space-between;
 }
 
+@media only screen and (max-width: 1200px) {
+  .temperature {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 60rem;
+  }
+}
+
 .temperature__current {
   height: 100%;
   width: 28rem;
+  border-radius: 0.5rem;
   -webkit-box-shadow: -6px -6px 8px rgba(255, 255, 255, 0.9), 5px 5px 8px rgba(0, 0, 0, 0.07);
           box-shadow: -6px -6px 8px rgba(255, 255, 255, 0.9), 5px 5px 8px rgba(0, 0, 0, 0.07);
   display: -webkit-box;
@@ -175,6 +196,13 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+@media only screen and (max-width: 1200px) {
+  .temperature__current {
+    width: 100%;
+    height: 30rem;
+  }
 }
 
 .temperature__city {
@@ -319,7 +347,6 @@ body {
   position: absolute;
   right: -1rem;
   top: 1rem;
-  font-size: 2rem;
   color: transparent;
   background-color: #1b98e0;
   text-align: center;
@@ -327,6 +354,7 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   font-size: 1rem;
+  font-size: 2rem;
 }
 
 .temperature__degrees__minmax {
@@ -355,6 +383,7 @@ body {
   height: 35%;
   -webkit-box-shadow: -6px -6px 8px rgba(255, 255, 255, 0.9), 5px 5px 8px rgba(0, 0, 0, 0.07);
           box-shadow: -6px -6px 8px rgba(255, 255, 255, 0.9), 5px 5px 8px rgba(0, 0, 0, 0.07);
+  border-radius: 0.5rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -381,6 +410,8 @@ body {
 .temperature__degrees__lower {
   width: 70%;
   height: 35%;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
   color: transparent;
   background-color: #1b98e0;
   text-align: center;
@@ -388,7 +419,6 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   font-size: 1rem;
-  padding: 0.5rem;
   -webkit-box-shadow: -6px -6px 8px rgba(255, 255, 255, 0.9), 5px 5px 8px rgba(0, 0, 0, 0.07);
           box-shadow: -6px -6px 8px rgba(255, 255, 255, 0.9), 5px 5px 8px rgba(0, 0, 0, 0.07);
   display: -webkit-box;
@@ -448,11 +478,25 @@ body {
           justify-content: space-between;
 }
 
+@media only screen and (max-width: 1200px) {
+  .temperature__details {
+    height: 26rem;
+    width: 100%;
+  }
+}
+
 .temperature__details__today {
   width: 100%;
   height: 47%;
+  border-radius: 0.5rem;
   -webkit-box-shadow: -6px -6px 8px rgba(255, 255, 255, 0.9), 5px 5px 8px rgba(0, 0, 0, 0.07);
           box-shadow: -6px -6px 8px rgba(255, 255, 255, 0.9), 5px 5px 8px rgba(0, 0, 0, 0.07);
+}
+
+@media only screen and (max-width: 1200px) {
+  .temperature__details__today {
+    height: 12rem;
+  }
 }
 
 .temperature__details__future {
@@ -472,10 +516,19 @@ body {
           justify-content: space-between;
 }
 
+@media only screen and (max-width: 1200px) {
+  .temperature__details__future {
+    height: 12rem;
+    -webkit-box-shadow: -6px -6px 8px rgba(255, 255, 255, 0.9), 5px 5px 8px rgba(0, 0, 0, 0.07);
+            box-shadow: -6px -6px 8px rgba(255, 255, 255, 0.9), 5px 5px 8px rgba(0, 0, 0, 0.07);
+  }
+}
+
 .temperature__details__days {
   position: relative;
   height: 100%;
   width: 7rem;
+  border-radius: 0.5rem;
   -webkit-box-shadow: -6px -6px 8px rgba(255, 255, 255, 0.9), 5px 5px 8px rgba(0, 0, 0, 0.07);
           box-shadow: -6px -6px 8px rgba(255, 255, 255, 0.9), 5px 5px 8px rgba(0, 0, 0, 0.07);
   display: -webkit-box;
@@ -491,6 +544,13 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+@media only screen and (max-width: 1200px) {
+  .temperature__details__days {
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
 }
 
 .temperature__details__day {
