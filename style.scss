@@ -1,0 +1,331 @@
+// VARIABLES
+$border-radius: 0.5rem;
+
+$color-bg: #f2f2f2;
+$color-prim: #1b98e0;
+$color-sec: #f2f3f7;
+
+$shadow-element: -6px -6px 8px rgba(255, 255, 255, 0.9), 5px 5px 8px rgba(0, 0, 0, 0.07);
+$shadow-element-inset: inset -6px -6px 8px rgba(255, 255, 255, 0.9), inset 5px 5px 8px rgba(0, 0, 0, 0.07);
+$shadow-container: -6px -6px 8px rgba(255, 255, 255, 2.9), 15px 15px 28px rgba(0, 0, 0, 0.17);
+
+$font-weight-big: 600;
+$font-weight-medium: 400;
+$font-weight-small: 300;
+
+// MIXINS
+@mixin center-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin center-transform {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin color-text {
+  color: transparent;
+  background-color: #1b98e0;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  font-size: 1rem;
+}
+
+// GLOBAL
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  @include center-flex();
+  height: 100vh;
+  width: 100%;
+  background-color: $color-bg;
+  font-size: 62.5%;
+}
+
+::placeholder {
+  @include color-text();
+  text-align: left;
+  font-weight: $font-weight-small;
+}
+
+// MAIN
+.container {
+  width: 75rem;
+  height: 35rem;
+  padding: 2rem;
+  margin: 2rem;
+  background-color: $color-sec;
+  box-shadow: $shadow-container;
+  @include center-flex();
+  flex-direction: column;
+}
+
+.input {
+  position: relative;
+  width: 100%;
+  height: 3rem;
+  margin-bottom: 2rem;
+
+  &__bar {
+    height: 100%;
+    width: 100%;
+    padding: 1rem;
+    background-color: $color-sec;
+    border-radius: 3rem 10rem 10rem 3rem;
+    box-shadow: $shadow-element-inset;
+    @include color-text();
+    text-align: left;
+    font-weight: $font-weight-big;
+  }
+
+  &__button {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: $color-sec;
+    box-shadow: $shadow-element;
+    @include center-transform();
+    left: 98%;
+
+    &:active {
+      box-shadow: $shadow-element-inset;
+    }
+
+    &--icon {
+      @include color-text();
+      font-size: 1.2rem;
+    }
+  }
+}
+
+.temperature {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: space-between;
+
+  &__current {
+    height: 100%;
+    width: 28rem;
+    box-shadow: $shadow-element;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__city {
+    width: 100%;
+    height: 6.5rem;
+    position: relative;
+    @include center-flex();
+    flex-direction: column;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      width: 90%;
+      height: 0.5rem;
+      border-radius: 10rem;
+      box-shadow: $shadow-element-inset;
+    }
+
+    &--place,
+    &--time {
+      height: 50%;
+      width: 100%;
+      @include color-text();
+      @include center-flex();
+    }
+
+    &--place {
+      height: 65%;
+
+      align-items: flex-end;
+      text-transform: uppercase;
+      font-weight: $font-weight-big;
+      font-size: 2rem;
+    }
+
+    &--time {
+      align-items: flex-start;
+      line-height: 1.5rem;
+    }
+  }
+
+  &__degrees {
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+    &__degree {
+      height: 100%;
+      width: 70%;
+      @include center-flex();
+    }
+
+    &__circle {
+      width: 15rem;
+      height: 15rem;
+      border-radius: 50%;
+      position: relative;
+      box-shadow: $shadow-element;
+      @include center-flex();
+      margin-left: 1.5rem;
+
+      &::after {
+        content: "";
+        position: absolute;
+        @include center-transform();
+        width: 13rem;
+        height: 13rem;
+        box-shadow: $shadow-element-inset;
+        border-radius: 50%;
+      }
+    }
+
+    &__number {
+      position: relative;
+      @include color-text();
+      font-size: 7rem;
+      font-weight: $font-weight-big;
+
+      &::after {
+        content: "o";
+        position: absolute;
+        right: -1rem;
+        top: 1rem;
+        font-size: 2rem;
+        @include color-text();
+      }
+    }
+
+    &__minmax {
+      height: 100%;
+      width: 40%;
+
+      @include center-flex();
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
+
+    &__upper {
+      width: 70%;
+      height: 35%;
+      box-shadow: $shadow-element;
+
+      @include center-flex();
+
+      i {
+        @include color-text();
+        background-color: #e03138;
+        font-size: 3.5rem;
+      }
+    }
+
+    &__lower {
+      width: 70%;
+      height: 35%;
+      @include color-text();
+      padding: 0.5rem;
+      box-shadow: $shadow-element;
+
+      @include center-flex();
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
+
+    &__max,
+    &__min {
+      width: 80%;
+
+      @include center-flex();
+      justify-content: space-evenly;
+
+      i {
+        font-size: 1.5rem;
+      }
+
+      p {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  &__details {
+    height: 100%;
+    width: 41.5rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__today {
+      width: 100%;
+      height: 47%;
+      box-shadow: $shadow-element;
+    }
+
+    &__future {
+      width: 100%;
+      height: 47%;
+
+      @include center-flex();
+      justify-content: space-between;
+    }
+
+    &__days {
+      position: relative;
+      height: 100%;
+      width: 7rem;
+      box-shadow: $shadow-element;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: column;
+    }
+
+    &__day {
+      @include color-text();
+      font-size: 1.2rem;
+      font-weight: $font-weight-big;
+      text-transform: uppercase;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 3rem;
+        left: 1rem;
+        width: 70%;
+        height: 0.2rem;
+        background-color: #69b6ea;
+      }
+    }
+    i {
+      @include color-text();
+      font-size: 2.5rem;
+    }
+
+    &__minmax {
+      margin-bottom: 1rem;
+      @include color-text();
+      font-weight: $font-weight-big;
+    }
+  }
+}
