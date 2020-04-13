@@ -1,23 +1,36 @@
-"use strict";
+window.addEventListener("load", () => {
+  let lon;
+  let lat;
+  const currentLoc = document.querySelector(".temperature__city--place");
+  const currentTemp = document.querySelector(".temperature__degrees__number");
+  const currentMax = document.querySelector(".temperature__degrees__max p");
+  const currentMin = document.querySelector(".temperature__degrees__min p");
+  const currentDate = document.querySelector(".temperature__city--time");
+  const futureMinMax = document.querySelectorAll(".temperature__details__minmax");
 
-const weatherConditions = new XMLHttpRequest();
-const weatherForecast = new XMLHttpRequest();
-const proxy = "https://cors-anywhere.herokuapp.com/";
-let cObj;
-let fObj;
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      lon = position.coords.longitude;
+      lat = position.coords.latitude;
 
-// GET THER WEATHER CONDITIONS
-weatherConditions.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=london&appid=91632573508ff10e943588017e6ef938&units=metric", true);
-weatherConditions.responseType = "text";
-weatherConditions.send(null);
+      const api = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=91632573508ff10e943588017e6ef938&units=metric`;
 
-weatherConditions.onload = function () {
-  if (weatherConditions.status === 200) {
-    cObj = JSON.parse(weatherConditions.responseText);
-    console.log(cObj);
-    document.querySelector(".temperature__city--place").innerHTML = cObj.name;
-    document.querySelector(".temperature__degrees__number").innerHTML = Math.round(cObj.main.temp);
-    document.querySelector(".temperature__degrees__max p").innerHTML = Math.round(cObj.main.temp_max) + "&#176;";
-    document.querySelector(".temperature__degrees__min p").innerHTML = Math.round(cObj.main.temp_min) + "&#176;";
+      fetch(api)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+          currentTemp.innerHTML = Math.round(data.current.temp);
+          currentMax.innerHTML = Math.round(data.daily[0].temp.max) + "&#176";
+          currentMin.innerHTML = Math.round(data.daily[0].temp.min) + "&#176";
+          futureMinMax[0].innerHTML = Math.round(data.daily[1].temp.max) + "&#176" + " - " + Math.round(data.daily[1].temp.min) + "&#176";
+          futureMinMax[1].innerHTML = Math.round(data.daily[2].temp.max) + "&#176" + " - " + Math.round(data.daily[2].temp.min) + "&#176";
+          futureMinMax[2].innerHTML = Math.round(data.daily[3].temp.max) + "&#176" + " - " + Math.round(data.daily[3].temp.min) + "&#176";
+          futureMinMax[3].innerHTML = Math.round(data.daily[4].temp.max) + "&#176" + " - " + Math.round(data.daily[4].temp.min) + "&#176";
+          futureMinMax[4].innerHTML = Math.round(data.daily[5].temp.max) + "&#176" + " - " + Math.round(data.daily[5].temp.min) + "&#176";
+          currentDate.innerHTML = new Date().toLocaleDateString("en", { year: "numeric", day: "2-digit", month: "long" });
+        });
+    });
   }
-};
+});
