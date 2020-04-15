@@ -393,6 +393,7 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   font-size: 1rem;
+  background-color: #e03138;
   font-size: 7rem;
   font-weight: 600;
 }
@@ -409,6 +410,7 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   font-size: 1rem;
+  background-color: #e03138;
   font-size: 2rem;
 }
 
@@ -476,7 +478,7 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   font-size: 1rem;
-  background-color: #e03138;
+  background-color: #1b98e0;
   font-size: 3.5rem;
   padding: 0;
 }
@@ -513,6 +515,7 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  font-weight: 600;
 }
 
 .temperature__degrees__max i, .temperature__degrees__min i {

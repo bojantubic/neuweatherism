@@ -267,6 +267,7 @@ body {
     &__number {
       position: relative;
       @include color-text();
+      background-color: $color-accent;
       font-size: 7rem;
       font-weight: $font-weight-big;
 
@@ -276,6 +277,7 @@ body {
         right: -1rem;
         top: 1rem;
         @include color-text();
+        background-color: $color-accent;
         font-size: 2rem;
       }
     }
@@ -316,7 +318,7 @@ body {
     &__upper {
       i {
         @include color-text();
-        background-color: $color-accent;
+        background-color: $color-prim;
         font-size: 3.5rem;
         padding: 0;
       }
@@ -335,6 +337,7 @@ body {
       width: 60%;
       @include center-flex();
       justify-content: space-between;
+      font-weight: $font-weight-big;
 
       i {
         font-size: 1.5rem;
