@@ -2,6 +2,12 @@ window.addEventListener("load", () => {
   let lon;
   let lat;
 
+  document.querySelector(".input__button").addEventListener("click", function () {
+    const value = document.querySelector(".input__bar").value;
+    if (value);
+    console.log(value);
+  });
+
   const currentLoc = document.querySelector(".temperature__city--place");
   const currentTemp = document.querySelector(".temperature__degrees__number");
   const currentMax = document.querySelector(".temperature__degrees__max p");
@@ -53,14 +59,16 @@ window.addEventListener("load", () => {
       icon.innerHTML = '<i class="wi wi-cloudy"></i>';
     }
   };
+
   // DETERMINE GEOLOCATION
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
+      const key = `91632573508ff10e943588017e6ef938`;
       lon = position.coords.longitude;
       lat = position.coords.latitude;
 
-      const mainAPI = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=91632573508ff10e943588017e6ef938&units=metric`;
-      const placeAPI = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=91632573508ff10e943588017e6ef938`;
+      const mainAPI = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${key}&units=metric`;
+      const placeAPI = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${key}`;
 
       fetch(placeAPI)
         .then((response) => {
