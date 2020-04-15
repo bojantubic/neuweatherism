@@ -4,6 +4,7 @@ $border-radius: 0.5rem;
 $color-bg: #f2f2f2;
 $color-prim: #1b98e0;
 $color-sec: #f2f3f7;
+$color-accent: #e03138;
 
 $shadow-element: -6px -6px 8px rgba(255, 255, 255, 0.9), 5px 5px 8px rgba(0, 0, 0, 0.07);
 $shadow-element-inset: inset -6px -6px 8px rgba(255, 255, 255, 0.9), inset 5px 5px 8px rgba(0, 0, 0, 0.07);
@@ -255,8 +256,9 @@ body {
 
       i {
         @include color-text();
-        background-color: #e03138;
+        background-color: $color-accent;
         font-size: 3.5rem;
+        padding: 0;
       }
     }
 
@@ -276,7 +278,6 @@ body {
     &__max,
     &__min {
       width: 80%;
-
       @include center-flex();
       justify-content: space-evenly;
 
