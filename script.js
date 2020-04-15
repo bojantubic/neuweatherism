@@ -53,7 +53,6 @@ window.addEventListener("load", () => {
       icon.innerHTML = '<i class="wi wi-cloudy"></i>';
     }
   };
-
   // DETERMINE GEOLOCATION
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -100,6 +99,61 @@ window.addEventListener("load", () => {
           futureMinMax[4].innerHTML = Math.round(data.daily[5].temp.max) + "&#176" + " - " + Math.round(data.daily[5].temp.min) + "&#176";
 
           currentDate.innerHTML = new Date().toLocaleDateString("en", { year: "numeric", day: "2-digit", month: "long" });
+
+          // DISPLAY CHART
+          const canvas = document.querySelector(".temperature__details__today canvas");
+          let barChart = new Chart(canvas, {
+            type: "bar",
+            data: {
+              labels: ["", "", "", "", ""],
+              datasets: [
+                {
+                  data: [Math.round(data.daily[1].temp.max), Math.round(data.daily[2].temp.max), Math.round(data.daily[3].temp.max), Math.round(data.daily[4].temp.max), Math.round(data.daily[5].temp.max)],
+                  backgroundColor: "rgba(226, 96, 98,1)",
+                },
+                {
+                  data: [Math.round(data.daily[1].temp.min), Math.round(data.daily[2].temp.min), Math.round(data.daily[3].temp.min), Math.round(data.daily[4].temp.min), Math.round(data.daily[5].temp.min)],
+                  backgroundColor: "rgba(105, 182, 234,1)",
+                },
+              ],
+            },
+            options: {
+              legend: {
+                display: false,
+              },
+              tooltips: {
+                enabled: false,
+              },
+              responsive: true,
+              maintainAspectRatio: false,
+              scales: {
+                xAxes: [
+                  {
+                    display: true,
+                    gridLines: {
+                      display: false,
+                      offsetGridLines: false,
+                    },
+                  },
+                ],
+                yAxes: [
+                  {
+                    display: false,
+                    ticks: {
+                      beginAtZero: true,
+                      min: 0,
+                    },
+                    gridLines: {
+                      display: true,
+                      offsetGridLines: false,
+                      drawOnChartArea: true,
+                      drawBorder: false,
+                    },
+                  },
+                ],
+              },
+            },
+          });
         });
     });
   }

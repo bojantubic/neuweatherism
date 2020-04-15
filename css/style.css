@@ -500,7 +500,7 @@ body {
 }
 
 .temperature__degrees__max, .temperature__degrees__min {
-  width: 80%;
+  width: 60%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -510,9 +510,9 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .temperature__degrees__max i, .temperature__degrees__min i {
@@ -551,9 +551,16 @@ body {
   border-radius: 0.5rem;
   -webkit-box-shadow: -6px -6px 8px rgba(255, 255, 255, 0.9), 5px 5px 8px rgba(0, 0, 0, 0.07);
           box-shadow: -6px -6px 8px rgba(255, 255, 255, 0.9), 5px 5px 8px rgba(0, 0, 0, 0.07);
+  padding-top: 2rem;
 }
 
 @media only screen and (max-width: 1200px) {
+  .temperature__details__today {
+    height: 12rem;
+  }
+}
+
+@media only screen and (max-width: 550px) {
   .temperature__details__today {
     height: 13rem;
   }

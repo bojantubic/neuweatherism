@@ -332,9 +332,9 @@ body {
 
     &__max,
     &__min {
-      width: 80%;
+      width: 60%;
       @include center-flex();
-      justify-content: space-evenly;
+      justify-content: space-between;
 
       i {
         font-size: 1.5rem;
@@ -366,8 +366,15 @@ body {
       height: 47%;
       border-radius: $border-radius;
       box-shadow: $shadow-element;
+      padding-top: 2rem;
 
       @media only screen and (max-width: 1200px) {
+        & {
+          height: 12rem;
+        }
+      }
+
+      @media only screen and (max-width: 550px) {
         & {
           height: 13rem;
         }
