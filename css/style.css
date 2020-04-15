@@ -357,8 +357,8 @@ body {
 
 @media only screen and (max-width: 550px) {
   .temperature__degrees__circle {
-    width: 12rem;
-    height: 12rem;
+    width: 13rem;
+    height: 13rem;
   }
 }
 
@@ -379,8 +379,8 @@ body {
 
 @media only screen and (max-width: 550px) {
   .temperature__degrees__circle::after {
-    width: 10rem;
-    height: 10rem;
+    width: 11rem;
+    height: 11rem;
   }
 }
 
