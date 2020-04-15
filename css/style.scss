@@ -75,9 +75,17 @@ body {
 
   @media only screen and (max-width: 1200px) {
     & {
-      width: 35rem;
+      max-width: 35rem;
       height: 67rem;
       justify-content: flex-start;
+    }
+  }
+
+  @media only screen and (max-width: 550px) {
+    & {
+      height: 100%;
+      justify-content: flex-start;
+      padding: 1rem;
     }
   }
 }
@@ -109,6 +117,12 @@ body {
     @include center-transform();
     left: 98%;
     cursor: pointer;
+
+    @media only screen and (max-width: 550px) {
+      & {
+        left: 94%;
+      }
+    }
 
     &:active {
       box-shadow: $shadow-element-inset;
@@ -147,6 +161,12 @@ body {
       & {
         width: 100%;
         height: 30rem;
+      }
+    }
+
+    @media only screen and (max-width: 550px) {
+      & {
+        height: 33rem;
       }
     }
   }
@@ -196,6 +216,14 @@ body {
     height: 100%;
     display: flex;
 
+    @media only screen and (max-width: 550px) {
+      & {
+        flex-direction: column;
+        @include center-flex();
+        margin-top: 2rem;
+      }
+    }
+
     &__degree {
       height: 100%;
       width: 70%;
@@ -211,6 +239,13 @@ body {
       @include center-flex();
       margin-left: 1.5rem;
 
+      @media only screen and (max-width: 550px) {
+        & {
+          width: 12rem;
+          height: 12rem;
+        }
+      }
+
       &::after {
         content: "";
         position: absolute;
@@ -219,6 +254,13 @@ body {
         height: 13rem;
         box-shadow: $shadow-element-inset;
         border-radius: 50%;
+
+        @media only screen and (max-width: 550px) {
+          & {
+            width: 10rem;
+            height: 10rem;
+          }
+        }
       }
     }
 
@@ -245,15 +287,33 @@ body {
       @include center-flex();
       flex-direction: column;
       justify-content: space-evenly;
+
+      @media only screen and (max-width: 550px) {
+        & {
+          flex-direction: row;
+          width: 100%;
+          margin-top: 0rem;
+        }
+      }
     }
 
-    &__upper {
+    &__upper,
+    &__lower {
       width: 70%;
       height: 35%;
       box-shadow: $shadow-element;
       border-radius: $border-radius;
       @include center-flex();
 
+      @media only screen and (max-width: 550px) {
+        & {
+          height: 7rem;
+          width: 8rem;
+        }
+      }
+    }
+
+    &__upper {
       i {
         @include color-text();
         background-color: $color-accent;
@@ -263,14 +323,9 @@ body {
     }
 
     &__lower {
-      width: 70%;
-      height: 35%;
       padding: 0.5rem;
-      border-radius: $border-radius;
       @include color-text();
-      box-shadow: $shadow-element;
 
-      @include center-flex();
       flex-direction: column;
       justify-content: space-evenly;
     }
@@ -314,7 +369,7 @@ body {
 
       @media only screen and (max-width: 1200px) {
         & {
-          height: 12rem;
+          height: 13rem;
         }
       }
     }
@@ -330,6 +385,8 @@ body {
         & {
           height: 12rem;
           box-shadow: $shadow-element;
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
         }
       }
     }
@@ -351,6 +408,13 @@ body {
           box-shadow: none;
         }
       }
+
+      @media only screen and (max-width: 550px) {
+        & {
+          width: 4rem;
+          height: 11rem;
+        }
+      }
     }
 
     &__day {
@@ -361,26 +425,50 @@ body {
       margin-top: 1rem;
       margin-bottom: 0.5rem;
 
+      @media only screen and (max-width: 550px) {
+        & {
+          font-size: 1rem;
+        }
+      }
+
       &::after {
         content: "";
         position: absolute;
-        top: 3rem;
+        top: 2.5rem;
         left: 1rem;
         width: 70%;
         height: 0.2rem;
         background-color: #69b6ea;
+
+        @media only screen and (max-width: 550px) {
+          & {
+            left: 0.5rem;
+          }
+        }
       }
     }
 
     i {
       @include color-text();
       font-size: 2.5rem;
+
+      @media only screen and (max-width: 550px) {
+        & {
+          font-size: 2rem;
+        }
+      }
     }
 
     &__minmax {
       margin-bottom: 1rem;
       @include color-text();
       font-weight: $font-weight-big;
+
+      @media only screen and (max-width: 550px) {
+        & {
+          font-size: 0.9rem;
+        }
+      }
     }
   }
 }
